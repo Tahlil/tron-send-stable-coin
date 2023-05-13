@@ -2,7 +2,7 @@ const TronWeb = require('tronweb')
 require('dotenv').config();
 
 
-async function main(network, amount) {
+async function main(network, recipientAddress, amount) {
    try {
     let url = null;
     if (network === "shasta") {
@@ -14,11 +14,12 @@ async function main(network, amount) {
     }
 
     const tronWeb = new TronWeb({
-        fullHost: url
+        fullHost: url,
+        privateKey: process.env.PRIVATE_KEY,
     });
    } catch (error) {
     console.error(error);
    } 
 }
 
-main();
+main("nile");
